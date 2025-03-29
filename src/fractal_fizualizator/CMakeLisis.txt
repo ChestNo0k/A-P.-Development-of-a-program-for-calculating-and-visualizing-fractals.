@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.16)
+project(FractalVisualizer)
+
+set(CMAKE_CXX_STANDARD 20)
+
+find_package(Qt6 REQUIRED COMPONENTS Widgets OpenGL)
+find_package(OpenGL REQUIRED)
+
+add_subdirectory(ui)
+add_subdirectory(fractals)
+add_subdirectory(render)
+add_subdirectory(core)
+
+add_executable(fractal_visualizer main.cpp)
+
+target_link_libraries(fractal_visualizer
+    Qt6::Widgets
+    Qt6::OpenGL
+    OpenGL::GL
+    ui
+    fractals
+    render
+    core
+)
